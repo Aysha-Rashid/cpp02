@@ -10,13 +10,17 @@ class Fixed
 		static const int fractionalBits = 8;
 	public:
 		Fixed();
-		Fixed(const int);
-		Fixed(const float);
-		~Fixed();
+		Fixed(const int int_value);
+		Fixed(const float float_value);
 		Fixed(const Fixed &fixedPoint);
-		Fixed	&operator=(const Fixed &copy); // change this so it can accept '<<'
+		Fixed	&operator=(const Fixed &copy);
+		~Fixed();
+	
+		int getRawBits(void) const;
+		void setRawBits(int const raw);
 		float   toFloat( void ) const;
 		int     toInt( void ) const;
 };
+		std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif

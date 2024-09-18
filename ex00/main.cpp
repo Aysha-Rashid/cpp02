@@ -7,7 +7,6 @@ int main( void )
 	Fixed c;
 	c = b;
 
-	// c.setRawBits(42);
 	// std::cout << "address a : " << &a << std::endl;
 	// std::cout << "address b : " << &b << std::endl;
 	// std::cout << "address c : " << &c << std::endl;

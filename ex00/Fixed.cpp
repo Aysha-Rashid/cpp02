@@ -2,13 +2,13 @@
 
 Fixed::Fixed()
 {
-	std::cout << "default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	this->fixedPoint = 0;
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &FixedPoint) : fixedPoint(FixedPoint.fixedPoint)
