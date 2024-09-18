@@ -2,20 +2,16 @@
 
 Fixed::Fixed() : fixedPoint(0){}
 
-Fixed::~Fixed(){}
+Fixed::~Fixed() {}
 
-Fixed::Fixed(const Fixed &FixedPoint){*this  = FixedPoint;}
+Fixed::Fixed(const Fixed &FixedPoint) {*this  = FixedPoint;}
 
-Fixed::Fixed(const int int_value) : fixedPoint(int_value << fractionalBits)
-{
-}
+Fixed::Fixed(const int int_value) : fixedPoint(int_value << fractionalBits) {}
 
-Fixed::Fixed(const float float_value) : fixedPoint(roundf(float_value * (1 << fractionalBits)))
-{
-}
+Fixed::Fixed(const float float_value) : fixedPoint(roundf(float_value * (1 << fractionalBits))) {}
 
 float Fixed::toFloat(void) const {
-    return static_cast<float>(this->fixedPoint) / (1 << fractionalBits);
+	return static_cast<float>(this->fixedPoint) / (1 << fractionalBits);
 }
 
 int Fixed::getRawBits(void) const {return (this->fixedPoint);}
@@ -31,8 +27,8 @@ Fixed& Fixed::operator=(const Fixed &copy)
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
-    out << fixed.toFloat();
-    return out;
+	out << fixed.toFloat();
+	return out;
 }
 
 // Comparison operators
@@ -56,35 +52,33 @@ Fixed Fixed::operator-(const Fixed &other) const {return Fixed(this->toFloat() -
 Fixed Fixed::operator*(const Fixed &other) const {return Fixed(this->toFloat() * other.toFloat());}
 
 Fixed Fixed::operator/(const Fixed &other) const {
-    if (other.fixedPoint == 0)
-        throw std::runtime_error("Division by zero");
-    return Fixed(this->toFloat() / other.toFloat());
+	if (other.fixedPoint == 0)
+		throw std::runtime_error("Division by zero");
+	return Fixed(this->toFloat() / other.toFloat());
 }
 
-// Pre-increment
+// Pre
 Fixed &Fixed::operator++() {
-    this->fixedPoint++;
-    return *this;
+	this->fixedPoint++;
+	return *this;
 }
 
-// Post-increment
-Fixed Fixed::operator++(int) {
-    Fixed temp = *this;
-    this->fixedPoint++;
-    return temp;
-}
-
-// Pre-decrement
 Fixed &Fixed::operator--() {
-    this->fixedPoint--;
-    return *this;
+	this->fixedPoint--;
+	return *this;
 }
 
-// Post-decrement
+// Post
+Fixed Fixed::operator++(int) {
+	Fixed temp = *this;
+	this->fixedPoint++;
+	return temp;
+}
+
 Fixed Fixed::operator--(int) {
-    Fixed temp = *this;
-    this->fixedPoint--;
-    return temp;
+	Fixed temp = *this;
+	this->fixedPoint--;
+	return temp;
 }
 
 // Static member functions
